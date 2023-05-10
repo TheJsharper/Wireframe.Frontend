@@ -17,7 +17,7 @@ import { AppLibDetailsModule } from "../app-lib-details/app-lib.details.module";
             ]*/
         },
         {path:'details', component:AppLibDetailsComponent},
-    ]),  AppLibStatusCardModule, CommonModule, AppLibDetailsModule],
+    ]),  AppLibStatusCardModule, CommonModule,/* AppLibDetailsModule*/],
     exports:[AppLibHomeComponent]
 })
 export class AppLibHomeModule{

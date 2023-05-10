@@ -1,12 +1,15 @@
-<h1>Details</h1>
+<div *ngIf="mapData | async">
 
-<mat-selection-list #shoes *ngIf="mapData | async">
+  <h1  class="mirror">{{(name | async)}}</h1>
+</div>
+
+<mat-selection-list *ngIf="(mapData | async) as map ">
   <mat-list-option *ngFor="let key of (mapData | async)!.keys()">
     <div class="tb-container">
       <div>
         {{ key }}
       </div>
-      <div>
+      <div *ngIf="(mapData | async)!.get(key)">
         {{ getDisplayValueGerman((mapData | async)!.get(key)) }}
       </div>
     </div>

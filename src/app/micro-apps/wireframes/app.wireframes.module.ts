@@ -12,6 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { RouterModule } from "@angular/router";
 import { AppWireframesComponent } from "./app.wireframes.component";
+import { AppWireframeResolver } from "src/app/resolvers/app.wireframes.resolver";
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { AppWireframesComponent } from "./app.wireframes.component";
         MatInputModule,
         RouterModule.forChild([
             {path:"", redirectTo:"home", pathMatch:'full'},
-            {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule)},
+            {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule), resolve: { hero: AppWireframeResolver },},
 
         ]),
         CommonModule
