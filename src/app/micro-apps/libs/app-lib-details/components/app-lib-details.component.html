@@ -1,5 +1,14 @@
 <h1>Details</h1>
 
-<!--<div *ngIf="device$">{{(device$ | async) |json}}</div>-->
-<div *ngIf=" (dataPromised |async)">{{(dataPromised | async)| json}}</div>
-<div *ngIf="data">{{data.id}}</div>
+<mat-selection-list #shoes *ngIf="mapData | async">
+  <mat-list-option *ngFor="let key of (mapData | async)!.keys()">
+    <div class="tb-container">
+      <div>
+        {{ key }}
+      </div>
+      <div>
+        {{ getDisplayValueGerman((mapData | async)!.get(key)) }}
+      </div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>

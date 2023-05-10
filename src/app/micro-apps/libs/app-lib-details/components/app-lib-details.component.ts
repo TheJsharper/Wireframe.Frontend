@@ -13,33 +13,37 @@ export class AppLibDetailsComponent implements OnInit {
     device$!: Observable<Device>;
     data!: Device;
     dataPromised!: Promise<Device>;
+    mapData!: Promise<void | Map<string, any>>;
+    typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
     constructor(private route: ActivatedRoute, private router: Router) {
         this.route.queryParams.subscribe(params => {
-            const current = this.router.getCurrentNavigation();
-            const extras = current?.extras;
-            console.log(current, extras);
             if (this.router.getCurrentNavigation()?.extras.state) {
                 this.data = this.router.getCurrentNavigation()?.extras?.state!['selected'];
-                console.log("DATTTTTA", this.data);
                 this.dataPromised = Promise.resolve(this.data);
             }
-        }, (error)=>this.dataPromised = Promise.reject(error), ()=>console.log("completead"));
+        }, (error) => this.dataPromised = Promise.reject(error), () => console.log("completead"));
 
 
     }
     ngOnInit(): void {
-
-        this.device$ = this.route.queryParams.pipe(
-            /*filter((value: Params) => (this.router.getCurrentNavigation()?.extras.state != null &&
-                this.router.getCurrentNavigation()?.extras.state != undefined
-            )),*/
-            map<Params, Device>((value: Params) => (this.router.getCurrentNavigation()?.extras?.state!['selected']))
-        );
-        this.device$.subscribe((value:Device)=> console.log("====>", value));
-        if(this.dataPromised != undefined){
-            this.dataPromised.then((value:Device)=>console.log("promising==> ", value))
-            .catch(console.error)
+        if (this.dataPromised != undefined) {
+            this.mapData = this.dataPromised
+                .then(this.getDataTransformtionToMap)
+                .catch(console.error)
         }
+    }
 
+    public getDisplayValueGerman(value:any){
+        if(typeof(value) === "boolean"){
+            return value? 'Ja':'Nein';
+        }else{
+            return value;
+        }
+    }
+    private getDataTransformtionToMap(value: Device): Map<string, any> {
+        return Object.entries(value).reduce((prev: Map<string, any>, cur: [string, any]) => {
+            prev.set(cur[0], cur[1]);
+            return prev;
+        }, new Map<string, any>());
     }
 }

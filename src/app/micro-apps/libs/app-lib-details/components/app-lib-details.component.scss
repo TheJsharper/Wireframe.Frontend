@@ -1,0 +1,9 @@
+:host {
+  .tb-container{
+    display: flex;
+    justify-content: space-between;
+  }
+  ::ng-deep .mdc-checkbox {
+    display: none !important;
+  }
+}
