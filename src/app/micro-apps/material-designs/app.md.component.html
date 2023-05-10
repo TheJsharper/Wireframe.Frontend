@@ -1,0 +1,129 @@
+<mat-card  style="margin-top: 5px;">
+    <mat-card-header>
+      <mat-card-title>Actions Buttons</mat-card-title>
+      <mat-card-subtitle>Start</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Actions Buttons</mat-card-title>
+      <mat-card-subtitle>End</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  
+  
+  <mat-card style="margin-top: 5px;">
+    <mat-card-content>
+      <h2 class="example-h2">Checkbox configuration</h2>
+  
+      <section class="example-section">
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
+      </section>
+  
+      <section class="example-section">
+        <label class="example-margin">Align:</label>
+        <mat-radio-group [(ngModel)]="labelPosition">
+          <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
+          <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+        </mat-radio-group>
+      </section>
+  
+      <section class="example-section">
+        <mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
+      </section>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="result" style="margin-top: 5px;">
+    <mat-card-content>
+      <h2 class="example-h2">Result</h2>
+  
+      <section class="example-section">
+        <mat-checkbox
+            class="example-margin"
+            [(ngModel)]="checked"
+            [(indeterminate)]="indeterminate"
+            [labelPosition]="labelPosition"
+            [disabled]="disabled">
+          I'm a checkbox
+        </mat-checkbox>
+      </section>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-slide-toggle style="margin-top: 5px;">Toggle me!</mat-slide-toggle>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu"></mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done"></mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="point_scan"></mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search_check"></mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+  
+  <mat-card>
+    <mat-card-content>
+      <h2 class="example-h2">Slider configuration</h2>
+  
+      <section class="example-section">
+        <mat-form-field class="example-margin example-width" appearance="fill">
+          <mat-label>Value</mat-label>
+          <input matInput type="number" [(ngModel)]="value">
+        </mat-form-field>
+        <mat-form-field class="example-margin example-width" appearance="fill">
+          <mat-label>Min value</mat-label>
+          <input matInput type="number" [(ngModel)]="min">
+        </mat-form-field>
+        <mat-form-field class="example-margin example-width" appearance="fill">
+          <mat-label>Max value</mat-label>
+          <input matInput type="number" [(ngModel)]="max">
+        </mat-form-field>
+        <mat-form-field class="example-margin example-width" appearance="fill">
+          <mat-label>Step size</mat-label>
+          <input matInput type="number" [(ngModel)]="step">
+        </mat-form-field>
+      </section>
+  
+      <section class="example-section">
+        <mat-checkbox [(ngModel)]="showTicks">Show ticks</mat-checkbox>
+      </section>
+  
+      <section class="example-section">
+        <mat-checkbox [(ngModel)]="thumbLabel">Show thumb label</mat-checkbox>
+      </section>
+  
+      <section class="example-section">
+        <mat-checkbox [(ngModel)]="disabled">Disabled</mat-checkbox>
+      </section>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="example-result-card">
+    <mat-card-content>
+      <h2>Result</h2>
+  
+      <div class="example-label-container">
+        <label id="example-name-label" class="example-name-label">Value</label>
+        <label class="example-value-label">{{value}}</label>
+      </div>
+      <mat-slider
+          class="example-margin"
+          [disabled]="disabled"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [discrete]="thumbLabel"
+          [showTickMarks]="showTicks">
+        <input matSliderThumb [(ngModel)]="value">
+      </mat-slider>
+    </mat-card-content>
+  </mat-card>

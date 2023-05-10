@@ -1,0 +1,16 @@
+<mat-card style="margin-top: 5px;">
+    <mat-card-content>
+        <div class="txt-1">
+
+            <h2>{{device.name}}</h2> <mat-icon [fontIcon]="'delete'"> </mat-icon>
+        </div>
+        <div class="txt-status">
+
+            <h2> Failsafe </h2> 
+
+            <mat-icon  fontIcon="{{device.failsafe? 'check':'close'}}">
+
+            </mat-icon>
+        </div>
+    </mat-card-content>
+</mat-card>   

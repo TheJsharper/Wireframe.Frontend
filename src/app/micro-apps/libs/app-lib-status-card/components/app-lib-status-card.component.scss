@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+  .based-row-layout {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+  .txt-1 {
+    @extend .based-row-layout;
+    justify-content: space-between;
+  }
+  .txt-status {
+    @extend .based-row-layout;
+  }
+}
