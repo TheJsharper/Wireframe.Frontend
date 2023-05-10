@@ -10,17 +10,18 @@ import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.mode
     styleUrls: ['./app-lib-details.component.scss']
 })
 export class AppLibDetailsComponent implements OnInit {
-    device$!: Observable<Device>;
-    data!: Device;
+
     dataPromised!: Promise<Device>;
+
     mapData!: Promise<void | Map<string, any>>;
+
     name!: Promise<string>;
 
     constructor(private route: ActivatedRoute, private router: Router) {
         this.route.queryParams.subscribe(params => {
             if (this.router.getCurrentNavigation()?.extras.state) {
-                this.data = this.router.getCurrentNavigation()?.extras?.state!['selected'];
-                this.dataPromised = Promise.resolve(this.data);
+                const data = this.router.getCurrentNavigation()?.extras?.state!['selected'];
+                this.dataPromised = Promise.resolve(data);
             }
         }, (error) => this.dataPromised = Promise.reject(error), () => console.log("completead"));
 
@@ -41,6 +42,10 @@ export class AppLibDetailsComponent implements OnInit {
         } else {
             return value;
         }
+    }
+
+    public async goBack(): Promise<void> {
+        this.router.navigate(['../'], { relativeTo: this.route });
     }
 
     public async getDeviceName(): Promise<string> {

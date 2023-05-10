@@ -1,7 +1,7 @@
 <div *ngIf="mapData | async" class="name">
 
   <h1  >{{(name | async)}}</h1> <h3 class="mirror"> {{(name | async)}}</h3>
-  <button mat-button color="primary" class="bts-back" > &lt;&lt;Zurück</button>
+  <button mat-button color="primary" class="bts-back" (click)="goBack()" > &lt;&lt;Zurück</button>
 </div>
 
 <mat-selection-list *ngIf="(mapData | async) as map ">
