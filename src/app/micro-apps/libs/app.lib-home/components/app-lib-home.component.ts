@@ -10,7 +10,7 @@ import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.mode
 })
 export class AppLibHomeComponent {
   devices$!: Observable<Device[]>
-  constructor(private activatedRoute: ActivatedRoute, private router:Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.devices$ = this.activatedRoute.data.pipe(map(({ hero }) => hero.devices));
@@ -23,11 +23,12 @@ export class AppLibHomeComponent {
 
   }
 
-  
 
-  onSelect(device:Device):void{
+
+  async onSelect(device: Device): Promise<void> {
     console.log("Selected", device);
 
-    this.router.navigate(['home/details'],{state: {selected:device}});
+    const result = await this.router.navigate(['details'], { state: { selected: device }, relativeTo: this.activatedRoute });
+    console.log("==Y", result, this.activatedRoute.url, this.router)
   }
 }

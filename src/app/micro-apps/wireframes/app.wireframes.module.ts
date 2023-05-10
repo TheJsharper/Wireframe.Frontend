@@ -28,7 +28,9 @@ import { AppWireframesComponent } from "./app.wireframes.component";
         MatFormFieldModule,
         MatInputModule,
         RouterModule.forChild([
-            {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule)}
+            {path:"", redirectTo:"home", pathMatch:'full'},
+            {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule)},
+
         ]),
         CommonModule
     ],

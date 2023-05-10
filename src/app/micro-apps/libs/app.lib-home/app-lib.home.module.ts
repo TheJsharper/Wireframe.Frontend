@@ -1,21 +1,23 @@
-import { NgModule } from "@angular/core";
-import { AppLibHomeComponent } from "./components/app-lib-home.component";
 import { CommonModule } from "@angular/common";
-import { Router, RouterModule } from "@angular/router";
-import { AppLibDetailsModule } from "../app-lib-details/app-lib.details.module";
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { AppLibDetailsComponent } from "../app-lib-details/components/app-lib-details.component";
 import { AppLibStatusCardModule } from "../app-lib-status-card/app-lib-status-card.module";
-import { Device } from "../../wireframes/models/app.wireframes.model";
+import { AppLibHomeComponent } from "./components/app-lib-home.component";
+import { AppLibDetailsModule } from "../app-lib-details/app-lib.details.module";
 
 @NgModule({
     declarations:[AppLibHomeComponent],
     imports:[CommonModule, RouterModule.forChild([
+        {path:"", redirectTo:"home", pathMatch:'full'},
         {path:'', component: AppLibHomeComponent,
-            children:[
-                {path:'details', component:AppLibDetailsModule},
-            ]
+            /*children:[
+               // {path:"", redirectTo:"details", pathMatch:'full'},
+                {path:'details', component:AppLibDetailsComponent},
+            ]*/
         },
-     //   {path:'details', component:AppLibDetailsModule},
-    ]),  AppLibStatusCardModule, CommonModule],
+        {path:'details', component:AppLibDetailsComponent},
+    ]),  AppLibStatusCardModule, CommonModule, AppLibDetailsModule],
     exports:[AppLibHomeComponent]
 })
 export class AppLibHomeModule{

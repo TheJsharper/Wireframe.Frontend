@@ -4,10 +4,15 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
 @NgModule({
-    declarations:[AppLibDetailsComponent],
-    imports:[CommonModule, RouterModule.forChild([
-        {path:'', component: AppLibDetailsComponent}
-    ])],
-    exports:[AppLibDetailsComponent]
+    declarations: [AppLibDetailsComponent],
+    imports: [
+
+        RouterModule.forChild([
+            { path: '', component: AppLibDetailsComponent }
+        ]),
+
+        CommonModule
+    ],
+    exports: [AppLibDetailsComponent, RouterModule]
 })
-export class AppLibDetailsModule{}
+export class AppLibDetailsModule { }

@@ -1,3 +1,5 @@
 <h1>Details</h1>
 
-<div>{{(device$ | async) |json}}</div>
+<!--<div *ngIf="device$">{{(device$ | async) |json}}</div>-->
+<div *ngIf=" (dataPromised |async)">{{(dataPromised | async)| json}}</div>
+<div *ngIf="data">{{data.id}}</div>
