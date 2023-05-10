@@ -1,8 +1,9 @@
-import { NgModule } from "@angular/core";
-import { AppLibDetailsComponent } from "./components/app-lib-details.component";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatListModule } from '@angular/material/list';
 import { RouterModule } from "@angular/router";
-import {MatListModule} from '@angular/material/list';
+import { AppLibDetailsComponent } from "./components/app-lib-details.component";
 
 @NgModule({
     declarations: [AppLibDetailsComponent],
@@ -13,7 +14,8 @@ import {MatListModule} from '@angular/material/list';
         ]),
 
         CommonModule,
-        MatListModule
+        MatListModule,
+        MatButtonModule
         
     ],
     exports: [AppLibDetailsComponent, RouterModule]
