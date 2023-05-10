@@ -1,19 +1,17 @@
-import { NgModule } from "@angular/core";
-import { AppWireframesComponent } from "./app.wireframes.component";
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRadioModule} from '@angular/material/radio';
-import {FormsModule} from '@angular/forms';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { MatSliderModule } from '@angular/material/slider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import { RouterModule } from "@angular/router";
-import { AppLibStatusCardModule } from "../libs/app-lib-status-card/app-lib-status-card.module";
-import { AppWireframesService } from "./services/app.wireframes.services";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { RouterModule } from "@angular/router";
+import { AppWireframesComponent } from "./app.wireframes.component";
 
 
 @NgModule({
@@ -30,11 +28,12 @@ import { CommonModule } from "@angular/common";
         MatFormFieldModule,
         MatInputModule,
         RouterModule.forChild([
-            {path:'' , component:AppWireframesComponent}
+            {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule)}
         ]),
-        AppLibStatusCardModule,
         CommonModule
     ],
-    providers: [MatIconRegistry, AppWireframesService],
+providers: [MatIconRegistry/*, AppWireframesService*/],
 })
-export class AppWireframesModule{}
+export class AppWireframesModule{
+   
+}

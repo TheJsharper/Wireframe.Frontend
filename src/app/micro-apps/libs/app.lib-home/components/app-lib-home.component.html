@@ -1,0 +1,3 @@
+<h1>Home</h1>
+
+<app-lib-status-card *ngFor="let device of (devices$ | async )" [device]="device" (click)="onSelect(device)" > </app-lib-status-card>

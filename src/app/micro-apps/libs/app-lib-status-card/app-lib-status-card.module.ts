@@ -1,14 +1,15 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { AppLibStatusCardComponent } from "./components/app-lib-status-card.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatIconModule } from "@angular/material/icon";
-import { CommonModule } from "@angular/common";
-import { AppLibDetailsComponent } from "../app-lib-details/app-lib-details.component";
+import { AppLibStatusCardComponent } from "./components/app-lib-status-card.component";
+import { RouterModule } from "@angular/router";
+import { AppLibStatusCardHomeComponent } from "./components/app-lib-status-card-home.component";
 
 @NgModule({
-    declarations:[AppLibStatusCardComponent, AppLibDetailsComponent],
+    declarations:[AppLibStatusCardComponent],
     imports:[MatCardModule, MatIconModule, CommonModule],
-    exports:[AppLibStatusCardComponent, AppLibDetailsComponent],
+    exports:[AppLibStatusCardComponent],
     providers:[]
 })
 export class AppLibStatusCardModule{}
