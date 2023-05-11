@@ -10,7 +10,10 @@ export class AppWireframeResolver implements Resolve<WireframeModel>{
             console.log("Resolver")
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WireframeModel> | Promise<WireframeModel> | WireframeModel {
-        return this.appWireframesService.getWireFrameModel();
+        const data = this.appWireframesService.data();
+
+        //return this.appWireframesService.getWireFrameModel();
+        return this.appWireframesService.uploadWireframeModel(data);
     }
 
 }

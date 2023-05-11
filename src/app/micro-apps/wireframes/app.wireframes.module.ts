@@ -13,6 +13,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { RouterModule } from "@angular/router";
 import { AppWireframesComponent } from "./app.wireframes.component";
 import { AppWireframeResolver } from "src/app/resolvers/app.wireframes.resolver";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AppWireframeResolver } from "src/app/resolvers/app.wireframes.resolver"
             {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule), resolve: { hero: AppWireframeResolver },},
 
         ]),
-        CommonModule
+        CommonModule,
+        HttpClientModule
     ],
 providers: [MatIconRegistry/*, AppWireframesService*/],
 })

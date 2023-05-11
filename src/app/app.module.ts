@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppWireframesService } from './micro-apps/wireframes/services/app.wireframes.services';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AppWireframesService } from './micro-apps/wireframes/services/app.wiref
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule  
+    BrowserAnimationsModule, 
+    HttpClientModule  
   ],
   providers:[AppWireframesService],
   bootstrap: [AppComponent]
