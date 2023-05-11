@@ -12,15 +12,8 @@ export class AppLibHomeComponent {
   devices$!: Observable<Device[]>
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.devices$ = this.activatedRoute.data.pipe(map(({ hero }) => hero.devices));
-    this.activatedRoute.data.subscribe(({ hero }) => {
-      console.log("Router Listener", hero);
-    })
-
-
-    //this.devices$= this.appWireframesService.getWireFrameModel().pipe(map((value:WireframeModel)=> value.devices));
-
   }
 
 
