@@ -2,18 +2,28 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { WireframeModel } from "../micro-apps/wireframes/models/app.wireframes.model";
 import { AppWireframesService } from "../micro-apps/wireframes/services/app.wireframes.services";
-import { Observable } from "rxjs";
+import { Observable, combineLatest, filter, mergeMap } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
-export class AppWireframeResolver implements Resolve<WireframeModel>{
+export class AppWireframeResolver implements Resolve<WireframeModel[]>{
     constructor(private appWireframesService: AppWireframesService) {
-            console.log("Resolver")
+        console.log("Resolver")
     }
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WireframeModel> | Promise<WireframeModel> | WireframeModel {
-        const data = this.appWireframesService.data();
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<WireframeModel[]> | Promise<WireframeModel[]> | WireframeModel[] {
 
-        //return this.appWireframesService.getWireFrameModel();
-        return this.appWireframesService.uploadWireframeModel(data);
+        const data: WireframeModel = this.appWireframesService.data();
+
+        const uploadOperation: Observable<WireframeModel> = this.appWireframesService.uploadWireframeModel(data);
+
+        const wireframes: Observable<WireframeModel[]> = this.appWireframesService.getAllWireframes();
+
+        const result: Observable<WireframeModel[]> = uploadOperation.pipe(
+            filter((value: WireframeModel) => value && value.devices.length > 0),
+            mergeMap((_: WireframeModel) => wireframes
+            ));
+
+        return result;
+
     }
 
 }

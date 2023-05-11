@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { Observable, from } from "rxjs";
-import { filter, map } from "rxjs/operators";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
 
 @Component({

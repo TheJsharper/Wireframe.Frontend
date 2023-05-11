@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, map } from "rxjs";
-import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
+import { Device, WireframeModel } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
 
 @Component({
   selector: 'app-lib-details',
@@ -10,6 +10,8 @@ import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.mode
 })
 export class AppLibHomeComponent {
   devices$!: Observable<Device[]>;
+
+  wireframes$!:Observable<WireframeModel[]>;
 
   step = 0;
 
@@ -27,7 +29,7 @@ export class AppLibHomeComponent {
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.devices$ = this.activatedRoute.data.pipe(map(({ wireframes }) => wireframes.devices));
+    this.wireframes$ = this.activatedRoute.data.pipe(map(({ wireframes }) => wireframes));
   }
 
 

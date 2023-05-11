@@ -1,7 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { AppWireframesService } from "./services/app.wireframes.services";
-import { Device, WireframeModel } from "./models/app.wireframes.model";
-import { Observable, map } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -15,8 +12,8 @@ export class AppWireframesComponent implements OnInit{
 
     ngOnInit() {
       console.log("====")
-      this.activatedRoute.data.subscribe(({ hero }) => {
-        console.log("====> ", hero);
+      this.activatedRoute.data.subscribe(({ wireframes }) => {
+        console.log("====> ", wireframes);
       })
     }
 }

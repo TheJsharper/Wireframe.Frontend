@@ -20,11 +20,18 @@ export class AppWireframesService {
     return response;
   }
 
+  public getAllWireframes(): Observable<WireframeModel[]> {
+    return this.httpClient.get<WireframeModel[]>("http://localhost:5207/Wireframe");
+  }
+
   public data(): WireframeModel {
 
+    const randomGenerated: string = Math.random().toString(36).substring(2);
 
+    const dateGenerated: string = (new Date()).getTime().toString(36);
     return {
       "id": "hshsh",
+      "name": `Initial Name ${randomGenerated}-${dateGenerated}`,
       "devices": [
         {
           "id": "1glmLrTZqf9YZleN",
@@ -94,4 +101,5 @@ export class AppWireframesService {
       ]
     };
   }
+  
 }

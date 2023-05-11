@@ -1,6 +1,7 @@
 
 export interface WireframeModel {
     id:string;
+    name:string
     devices: Device[];
 }
 
