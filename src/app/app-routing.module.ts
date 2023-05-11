@@ -10,9 +10,9 @@ const routes: Routes = [
   },
   {
     path: 'wireframes', loadChildren: () => import('./micro-apps/wireframes/app.wireframes.module').then(m => m.AppWireframesModule),
-    resolve: { hero: AppWireframeResolver },
+    resolve: { wireframes: AppWireframeResolver },
 
-  },{ path:'' , redirectTo:'wireframes', pathMatch:'full'}
+  }, { path: '', redirectTo: 'wireframes', pathMatch: 'full' }
 ];
 
 @NgModule({

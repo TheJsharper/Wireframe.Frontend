@@ -9,11 +9,25 @@ import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.mode
   styleUrls: ['./app-lib-home.component.scss']
 })
 export class AppLibHomeComponent {
-  devices$!: Observable<Device[]>
+  devices$!: Observable<Device[]>;
+
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.devices$ = this.activatedRoute.data.pipe(map(({ hero }) => hero.devices));
+    this.devices$ = this.activatedRoute.data.pipe(map(({ wireframes }) => wireframes.devices));
   }
 
 

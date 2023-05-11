@@ -7,16 +7,11 @@ import { AppLibDetailsComponent } from "./components/app-lib-details.component";
 
 @NgModule({
     declarations: [AppLibDetailsComponent],
-    imports: [
-
-        RouterModule.forChild([
-            { path: '', component: AppLibDetailsComponent }
-        ]),
-
-        CommonModule,
+    imports: [CommonModule,
         MatListModule,
-        MatButtonModule
-        
+        MatButtonModule,
+        CommonModule
+
     ],
     exports: [AppLibDetailsComponent, RouterModule]
 })
