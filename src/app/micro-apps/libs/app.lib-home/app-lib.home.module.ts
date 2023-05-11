@@ -13,6 +13,7 @@ import { AppLibDetailsModule } from "../app-lib-details/app-lib.details.module";
 import { AppLibDetailsComponent } from "../app-lib-details/components/app-lib-details.component";
 import { AppLibStatusCardModule } from "../app-lib-status-card/app-lib-status-card.module";
 import { AppLibHomeComponent } from "./components/app-lib-home.component";
+import { AppLibHomeService } from "./services/app-lib-home.service";
 @NgModule({
     declarations: [AppLibHomeComponent],
     imports: [CommonModule,
@@ -33,7 +34,8 @@ import { AppLibHomeComponent } from "./components/app-lib-home.component";
         MatButtonModule,
 
         AppLibDetailsModule],
-    exports: [AppLibHomeComponent]
+    exports: [AppLibHomeComponent],
+    providers:[AppLibHomeService]
 })
 export class AppLibHomeModule {
 }
