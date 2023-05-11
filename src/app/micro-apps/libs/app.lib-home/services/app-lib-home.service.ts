@@ -3,11 +3,11 @@ import { AppLibHomeModule } from "../app-lib.home.module";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-    providedIn:AppLibHomeModule
+    providedIn: AppLibHomeModule
 })
-export class AppLibHomeService{
-    constructor(private httpClient:HttpClient){
+export class AppLibHomeService {
+    constructor(private httpClient: HttpClient) {  }
 
-    }
     
+
 }

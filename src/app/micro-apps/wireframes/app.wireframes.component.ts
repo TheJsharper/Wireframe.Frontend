@@ -10,14 +10,7 @@ import { ActivatedRoute } from "@angular/router";
     styleUrls:['./app.wireframes.component.scss']
 })
 export class AppWireframesComponent implements OnInit{
-   
-   // devices$!:Observable<Device[]>
- /*   constructor(private appWireframesService:AppWireframesService){
-
-    }
-    ngOnInit(): void {
-      //this.devices$= this.appWireframesService.getWireFrameModel().pipe(map((value:WireframeModel)=> value.devices));
-    }*/
+    
     constructor(private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {

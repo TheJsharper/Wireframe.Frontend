@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,14 +13,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { RouterModule } from "@angular/router";
 import { AppWireframesComponent } from "./app.wireframes.component";
-import { AppWireframeResolver } from "src/app/resolvers/app.wireframes.resolver";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
-    declarations:[AppWireframesComponent],
-    exports:[],
-    imports:[
+    declarations: [AppWireframesComponent],
+    exports: [],
+    imports: [
         MatCardModule,
         MatRadioModule,
         MatCheckboxModule,
@@ -30,15 +29,15 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
         MatFormFieldModule,
         MatInputModule,
         RouterModule.forChild([
-            {path:"", redirectTo:"home", pathMatch:'full'},
-            {path:'home' , loadChildren: ()=> import('../libs/app.lib-home/app-lib.home.module').then(m=> m.AppLibHomeModule), resolve: { hero: AppWireframeResolver },},
+            { path: "", redirectTo: "home", pathMatch: 'full' },
+            { path: 'home', loadChildren: () => import('../libs/app.lib-home/app-lib.home.module').then(m => m.AppLibHomeModule) },
 
         ]),
         CommonModule,
         HttpClientModule
     ],
-providers: [MatIconRegistry/*, AppWireframesService*/],
+    providers: [MatIconRegistry/*, AppWireframesService*/],
 })
-export class AppWireframesModule{
-   
+export class AppWireframesModule {
+
 }
