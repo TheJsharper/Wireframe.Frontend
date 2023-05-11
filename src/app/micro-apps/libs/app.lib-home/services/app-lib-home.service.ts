@@ -1,8 +1,7 @@
-import { Injectable } from "@angular/core";
-import { AppLibHomeModule } from "../app-lib.home.module";
 import { HttpClient } from "@angular/common/http";
-import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Device } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
 
 @Injectable()
 export class AppLibHomeService {
