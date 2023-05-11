@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { AfterContentChecked, ChangeDetectorRef, Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, map } from "rxjs";
 import { Device, WireframeModel } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
@@ -8,12 +8,18 @@ import { Device, WireframeModel } from "src/app/micro-apps/wireframes/models/app
   templateUrl: './app-lib-home.component.html',
   styleUrls: ['./app-lib-home.component.scss']
 })
-export class AppLibHomeComponent {
+export class AppLibHomeComponent implements AfterContentChecked {
   devices$!: Observable<Device[]>;
 
   wireframes$!:Observable<WireframeModel[]>;
 
   step = 0;
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private changeDetector: ChangeDetectorRef) { }
+
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
+  }
 
   setStep(index: number) {
     this.step = index;
@@ -26,7 +32,6 @@ export class AppLibHomeComponent {
   prevStep() {
     this.step--;
   }
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.wireframes$ = this.activatedRoute.data.pipe(map(({ wireframes }) => wireframes));

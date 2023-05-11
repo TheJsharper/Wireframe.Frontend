@@ -1,18 +1,25 @@
-<div *ngIf="mapData | async" class="name">
+<div *ngIf="map !== null" class="name">
 
-  <h1  >{{(name | async)}}</h1> <h3 class="mirror"> {{(name | async)}}</h3>
+  <h1  >{{name}}</h1> <h3 class="mirror"> {{name}}</h3>
   <button mat-button color="primary" class="bts-back" (click)="goBack()" > &lt;&lt;Zurück</button>
 </div>
 
-<mat-selection-list *ngIf="(mapData | async) as map ">
-  <mat-list-option *ngFor="let key of (mapData | async)!.keys()">
-    <div class="tb-container">
-      <div>
-        {{ key }}
-      </div>
-      <div *ngIf="(mapData | async)!.get(key)">
-        {{ getDisplayValueGerman((mapData | async)!.get(key)) }}
-      </div>
-    </div>
-  </mat-list-option>
-</mat-selection-list>
+<ng-container *ngIf="keys !== null ">
+ <ng-container *ngIf="keys !== null && keys">
+
+
+   <mat-selection-list >
+     <mat-list-option *ngFor="let key of keys">
+       <div class="tb-container">
+         <div>
+           {{ key }}
+         </div>
+         <div *ngIf="map.get(key)">
+           {{ getDisplayValueGerman(map.get(key)) }}
+         </div>
+       </div>
+     </mat-list-option>
+   </mat-selection-list>
+ </ng-container>
+
+</ng-container>
