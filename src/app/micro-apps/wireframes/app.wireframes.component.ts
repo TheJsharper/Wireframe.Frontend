@@ -3,8 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'app-wireframes',
-    templateUrl: './app.wireframes.component.html',
-    styleUrls:['./app.wireframes.component.scss']
+    template: '<router-outlet></router-outlet>'
 })
 export class AppWireframesComponent implements OnInit{
     

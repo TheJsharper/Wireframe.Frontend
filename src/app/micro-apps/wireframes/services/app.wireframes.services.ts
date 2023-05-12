@@ -31,7 +31,7 @@ export class AppWireframesService {
     const dateGenerated: string = (new Date()).getTime().toString(36);
     return {
       "id": "hshsh",
-      "name": `Initial Name ${randomGenerated}-${dateGenerated}`,
+      "name": `Initial Name ${randomGenerated}-${dateGenerated}`.toUpperCase(),
       "devices": [
         {
           "id": "1glmLrTZqf9YZleN",
