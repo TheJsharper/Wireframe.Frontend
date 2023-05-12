@@ -1,38 +1,61 @@
 :host {
-  .tb-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  mat-selection-list{
-    border: 1px   solid black;
-    position: relative;
-    &:after{
-      content: '';
-      right:50%;
-      height: 100%;
-      top:0;
-      border-left: 1px solid black;
-      position: absolute;
-    } 
-    mat-list-option:nth-child(2n+1){
-      background-color:white;
+  $bg-color: #3f51b5;
+  .details-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5.2rem;
+    .nav {
+      box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
+        0 1px 18px #0000001f;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      background: $bg-color;
+      color: white;
+      h1 {
+        margin-left: 1rem;
+      }
     }
-    mat-list-option:nth-child(2n){
-      background-color:rgb(230, 228, 228);
+
+    mat-selection-list {
+      border: 1px solid black;
+      position: relative;
+      padding-top: 0;
+      padding-bottom: 0;
+      &:after {
+        content: "";
+        right: 50%;
+        height: 100%;
+        top: 0;
+        border-left: 1px solid black;
+        position: absolute;
+      }
+      .tb-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      mat-list-option:nth-child(2n + 1) {
+        background-color: white;
+      }
+      mat-list-option:nth-child(2n) {
+        background-color: rgb(230, 228, 228);
+      }
     }
-  }
-  ::ng-deep .mdc-checkbox {
-    display: none !important;
-  }
-  .name{
-    display: flex;
-    align-items: center;
-    .bts-back{
-      margin-left: auto;
+    ::ng-deep .mdc-checkbox {
+      display: none !important;
     }
-    .mirror {
-      margin:.5rem;
-      color: #c3c3c3;
+    .name {
+      display: flex;
+      align-items: center;
+      .bts-back {
+        margin-left: auto;
+      }
+      .mirror {
+        margin: 0.5rem;
+        color: #c3c3c3;
+      }
     }
   }
 }

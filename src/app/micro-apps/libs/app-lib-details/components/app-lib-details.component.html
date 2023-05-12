@@ -1,25 +1,32 @@
-<div *ngIf="map !== null" class="name">
+<div class="details-container">
 
-  <h1  >{{name}}</h1> <h3 class="mirror"> {{name}}</h3>
-  <button mat-button color="primary" class="bts-back" (click)="goBack()" > &lt;&lt;Zurück</button>
+
+  <div class="nav">
+    <h1>Wireframe App</h1>
+  </div>
+  
+  <div *ngIf="map !== null" class="name">
+    <h1>{{ name }}</h1>
+    <h3 class="mirror">{{ name }}</h3>
+    <button mat-button color="primary" class="bts-back" (click)="goBack()">
+      &lt;&lt;Zurück
+    </button>
+  </div>
+  
+  <ng-container *ngIf="keys !== null">
+    <ng-container *ngIf="keys !== null && keys">
+      <mat-selection-list>
+        <mat-list-option *ngFor="let key of keys">
+          <div class="tb-container">
+            <div>
+              {{ key }}
+            </div>
+            <div *ngIf="map.get(key)">
+              {{ getDisplayValueGerman(map.get(key)) }}
+            </div>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </ng-container>
+  </ng-container>
 </div>
-
-<ng-container *ngIf="keys !== null ">
- <ng-container *ngIf="keys !== null && keys">
-
-
-   <mat-selection-list >
-     <mat-list-option *ngFor="let key of keys">
-       <div class="tb-container">
-         <div>
-           {{ key }}
-         </div>
-         <div *ngIf="map.get(key)">
-           {{ getDisplayValueGerman(map.get(key)) }}
-         </div>
-       </div>
-     </mat-list-option>
-   </mat-selection-list>
- </ng-container>
-
-</ng-container>
