@@ -1,4 +1,4 @@
-import { AfterContentChecked, ChangeDetectorRef, Component } from "@angular/core";
+import { AfterContentChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, filter, map, mergeMap, pipe, tap } from "rxjs";
 import { Device, WireframeModel } from "src/app/micro-apps/wireframes/models/app.wireframes.model";
@@ -8,7 +8,8 @@ import { AppWireframesService } from "src/app/micro-apps/wireframes/services/app
 @Component({
   selector: 'app-lib-home',
   templateUrl: './app-lib-home.component.html',
-  styleUrls: ['./app-lib-home.component.scss']
+  styleUrls: ['./app-lib-home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppLibHomeComponent implements AfterContentChecked {
   devices$!: Observable<Device[]>;
@@ -45,9 +46,9 @@ export class AppLibHomeComponent implements AfterContentChecked {
 
   ngOnInit(): void {
     this.wireframes$ = this.activatedRoute.data.pipe(map(({ wireframes }) => wireframes))
-    .pipe(
-      tap(() =>{ this.isLoding = false; console.log(this.isLoding)}))
-    ;
+      .pipe(
+        tap(() => { this.isLoding = false; console.log(this.isLoding) }))
+      ;
   }
 
   onRemove(parentId: string, d: Device): void {
@@ -58,6 +59,18 @@ export class AppLibHomeComponent implements AfterContentChecked {
       mergeMap(() => wireframesModel),
     );
     this.wireframes$ = result;
+  }
+
+  uploadJsonToServer(): void {
+
+    const data: WireframeModel = this.appWireframesService.data();
+
+    this.wireframes$ = this.appWireframesService.uploadWireframeModel(data).pipe(
+
+      filter((value: WireframeModel) => value.name=== data.name),
+      mergeMap(() => this.appWireframesService.getAllWireframes())
+
+    );
   }
 
   async onSelect(device: Device): Promise<void> {

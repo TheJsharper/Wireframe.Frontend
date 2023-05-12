@@ -15,6 +15,7 @@ import { AppLibStatusCardModule } from "../app-lib-status-card/app-lib-status-ca
 import { AppLibHomeComponent } from "./components/app-lib-home.component";
 import { AppLibHomeService } from "./services/app-lib-home.service";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
     declarations: [AppLibHomeComponent],
     imports: [CommonModule,
@@ -33,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatInputModule,
         MatButtonModule,
         MatProgressSpinnerModule,
+        MatTooltipModule,
         
         AppLibStatusCardModule,
         AppLibDetailsModule],

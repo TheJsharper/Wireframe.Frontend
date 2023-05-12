@@ -14,8 +14,16 @@
       z-index: 2;
       background:  $bg-color;
       color:white;
-      h1{
-        margin-left: 1rem;
+      .nav-items{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button{
+          margin-right: 3rem;
+        }
+        h1{
+          margin-left: 1rem;
+        }
       }
     }
 
