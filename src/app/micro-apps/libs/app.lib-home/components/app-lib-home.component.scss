@@ -1,15 +1,34 @@
 :host {
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    .header{
-        text-align: center;
-
+  $bg-color:#3f51b5;
+  .app-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5.2rem;
+    .nav {
+      box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024,
+        0 1px 18px #0000001f;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      background:  $bg-color;
+      color:white;
+      h1{
+        margin-left: 1rem;
+      }
     }
-    .devices-container {
+
+    .container {
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+      .header {
+        text-align: center;
+      }
+      .devices-container {
+        display: flex;
+        justify-content: space-around;
+      }
     }
   }
 }

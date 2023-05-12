@@ -23,7 +23,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
             { path: '', component: AppLibHomeComponent },
             { path: 'details', component: AppLibDetailsComponent },
         ]),
-        AppLibStatusCardModule,
         CommonModule,
         MatExpansionModule,
         MatIconModule,
@@ -34,7 +33,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatInputModule,
         MatButtonModule,
         MatProgressSpinnerModule,
-
+        
+        AppLibStatusCardModule,
         AppLibDetailsModule],
     exports: [AppLibHomeComponent],
     providers:[AppLibHomeService]
